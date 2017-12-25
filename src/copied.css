@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+body{
+  background-color: #FFF8F8;
+}
+
+#phone {
+  margin: 0 auto;
+  width: 596px;
+  padding-right: 2px;
+}
+
+#content-box {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+#content {
+  max-width: 422px;
+  height: 525px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #FFF8F8;
+}
+
+#logo {
+  margin-top: 30px;
+  margin-bottom: -40px;
+}
+
+.animated {
+  animation-duration: 2s;
+}
+
+.bounce {
+  animation-name: bounce;
+}
+
+@keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.flipInX {
+  animation-name: flipInX;
+}
+
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+div#header {
+  height: 50px;
+}
+
+#home-btnz {
+  display: none;
+  padding-top: 13px;
+}
+
+#home-btnz:hover {
+  background-color: crimson;
+}
+
+div#body {
+  height: 300px;
+}
+
+.question {
+  width: 100%;
+  height: 300px;
+  margin-left: -2px;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+#yelp-logo {
+  animation-name: fadeIn;
+  animation-duration: 6s;
+}
+
+#yelp-logo span {
+  font-size: 11px;
+  color: 'dimgray'; 
+  vertical-align: 'text-top';
+}
+
+#yelp-logo img {
+  margin-top: 10px;
+  width: 50px;
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+#start_btnz {
+  text-decoration: none;
+  background-color: white;
+  color: white;
+  font-size: 18px;
+  padding: 12px 50px;
+  border-radius: 5px;
+  animation-name: bgcchange;
+  animation-delay: 1s;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bgcchange {
+    0%   {background-color: cornflowerblue;}
+    50%  {background-color: coral;}
+    100% {background-color: cornflowerblue;}
+}
+
+.answer {
+  width: 100%;
+}
+
+#skip {
+  width: 102%;
+  font-size: 14px;
+  margin-top: 56px;
+  height: 30px;
+  padding-top: 10px;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+  vertical-align: text-top;
+}
+
+#skip:hover {
+  cursor: pointer;
+  transition: all 0.6s ease;
+  background-color: #ccc;
+  color: black;
+}
+
+.two-choices {
+  width: 211px;
+  height: 223px;
+  float: left;
+  padding-top: 45px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+}
+
+#two-choices {
+  height: 223px;  
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding-top: 110px;
+  margin-top: -95px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#two-choices:hover{
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.three-choices {
+  width: 141px;
+  height: 223px;
+  float: left;
+  padding-top: 45px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+}
+
+.three-choices-01 {
+  width: 140px;
+  height: 223px;
+  float: left;
+  padding-top: 45px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+}
+
+#three-choices {
+  height: 223px;  
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding-top: 110px;
+  margin-top: -95px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#three-choices:hover{
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+#summary-title {
+  width: 75%;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  padding: 3px 20px;
+  margin: 0 auto;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#summary {
+  width: 75%;
+  margin: 0 auto;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: left;
+  background-color: white;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.magic {
+  animation-duration: 1s;
+}
+
+.openDownLeft {
+  animation-name: openDownLeft;
+}
+
+@keyframes openDownLeft {
+  0% {
+    transform-origin: bottom left;
+    transform: rotate(-110deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  100% {
+    transform-origin: bottom left;
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+}
+
+input[type="submit"]{
+   font-size: 16px;
+   color: dimgray;
+   background: none;
+   border: 0;
+   padding: 16px 40px;
+   -webkit-appearance: button;
+   -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+}
+
+input[type="submit"]:hover{
+	color: white;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.sweep-to-right {
+  text-decoration: none;
+  background-color: gainsboro;
+  position: relative;
+  display: inline-block;
+  transform: translateZ(0);
+}
+
+.sweep-to-right:hover {
+  background-color: gainsboro;
+}
+
+.sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: cornflowerblue;
+  transform: scaleX(0);
+  transition-duration: 0.6s;
+  transition-timing-function: ease-out;
+  transform-origin: 0 50%;
+}
+
+.sweep-to-right:hover:before {
+	transform: scaleX(1);
+	color: white;
+}
+
+#restaurant-name {
+	font-size: 25px;
+	font-weight: bold;
+	line-height: 48px;
+}
+
+#result-body-container {
+	height: 200px;
+	width: 80%;
+	margin: 20px auto;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+}
+
+#result-body-left {
+	float: left;
+	width: 50%;
+	height: 200px;
+	text-align: center;
+}
+
+#result-body-right {
+	text-align: right;
+	height: 200px;
+	padding: 8px 18px;
+}
+
+#rating {
+	vertical-align: text-bottom;
+}
+
+#restaurant-image {
+	border-radius: 10%;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#address {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+#yelp-logo-1 {
+	vertical-align: text-top;
+}
+
+#check-this-out-on-yelp {
+	text-decoration: none;
+}
+
+#check-this-out-on-yelp:hover {
+	padding: 5px 15px;
+	font-size: 16px;
+	transition: all 0.3s ease-out;
+}
+
+#search-again {
+	text-decoration: none;
+	font-size: 22px;
+	color: black;
+}
+
+#search-again:hover {
+	color: lightseagreen;
+	background-color: transparent; 
+	transition: all 0.3s ease-out;
+}
+
+#choice-for-today {
+  animation-name: colorchange;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes colorchange {
+    0%   {color: crimson;}
+    50%  {color: cornflowerblue;}
+    100% {color: crimson;}
+}
+
+#loading {
+	margin-top: 180px;
+}
