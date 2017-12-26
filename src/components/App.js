@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import StartMenuComponent from '../components/StartMenuComponent.js'
-
+import InnerContentComponent from '../components/InnerContentComponent.js'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,7 @@ class App extends Component {
         <div id="content-box">
           <div id="content">
             <div id="body">
-            {(this.state.step == 0) ? <StartMenuComponent/> : null }
+              <InnerContentComponent/>
             </div>
           </div>
         </div>
