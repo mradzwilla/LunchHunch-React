@@ -7,25 +7,23 @@ class DistanceQuestionComponent extends Component {
     super(props);
     this.state = {
     	range: 0,
-    	zip: null
+    	latitude: '',
+    	longitude: ''
     };
     this.handleOnChange = this.handleOnChange.bind(this)
     this.getCoordinates= this.getCoordinates.bind(this)
   }
-  componentDidMount(){
-  	this.getCoordinates();
+  componentWillMount(){
   }
   getCoordinates(){
   	var showPosition = (position) => {
-  		this.setState({
-  			latitude: position.coords.latitude,
-  			longitude: position.coords.longitude
-  			})
+	  	this.setState({
+			latitude: position.coords.latitude,
+			longitude: position.coords.longitude
+		})
   	}
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        alert('Not supported')
     }
   }
   handleOnChange(value){
@@ -37,6 +35,7 @@ class DistanceQuestionComponent extends Component {
   	let { range } = this.state
   	return(
   	  <div>
+  	  <h1>How far do you want to go?</h1>
       <Slider
         value={range}
         orientation="horizontal"

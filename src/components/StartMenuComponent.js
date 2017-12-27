@@ -6,9 +6,9 @@ class StartMenuComponent extends Component {
   render() {
     return (
     <div>
-      <img id="logo" class="animated bounce" src={logo} width="300" alt="OK"/>
-        <div class="question">
-        <a id="start_btnz" data-remote="true" rel="nofollow">FIND ME A PLACE TO EAT</a>    
+      <img id="logo" className="animated bounce" src={logo} width="300" alt="OK"/>
+        <div className="question">
+        <a id="start_btnz" data-remote="true" rel="nofollow" onClick={() => {this.props.nextStep()}}>FIND ME A PLACE TO EAT</a>    
           <div id="yelp-logo">
             <span>Powered by  </span>
             <img src={yelp_logo} alt="Yelp!"/>
