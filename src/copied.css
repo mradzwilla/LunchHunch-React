@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 * {
   margin: 0;
   padding: 0;
@@ -94,6 +96,8 @@ body{
 
 div#header {
   height: 50px;
+  background-color: crimson;
+  transition: all 0.6s ease-in-out;
 }
 
 #home-btnz {
@@ -159,7 +163,10 @@ div#body {
 .answer {
   width: 100%;
 }
-
+.questionText {
+  color: 'grey';
+  font-size: '20px';
+}
 #skip {
   width: 102%;
   font-size: 14px;
@@ -186,23 +193,25 @@ img {
   width: 211px;
   height: 223px;
   float: left;
-  padding-top: 45px;
+  padding-top: 55px;
   font-size: 25px;
   background-color: #BBCFF2;
   list-style-type: none;
-}
-
-#two-choices {
-  height: 223px;  
-  text-decoration: none;
-  font-size: 16px;
-  display: block;
-  padding-top: 110px;
-  margin-top: -95px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#two-choices:hover{
+.two-choices img{
+  width: 50px;
+}
+.two-choices-link {
+  text-decoration: none;
+  font-size: 22px;
+  display: block;
+  padding-top: 20px;
+}
+
+.two-choices-link:hover{
   background-color: cornflowerblue;
   cursor: pointer;
   color: white;
@@ -424,3 +433,5 @@ input[type="submit"]:hover{
 #loading {
 	margin-top: 180px;
 }
+
+/* Images for the PreferenceQuestionComponent are configured below */
