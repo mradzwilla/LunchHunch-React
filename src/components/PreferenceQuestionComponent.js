@@ -6,7 +6,6 @@ class PreferenceQuestionComponent extends Component {
   }
 
   handleClick(arrayToSlice, clickedValue){
-    //Need to set parent value here as well
     this.props.nextStep()
     this.props.updatePreference(arrayToSlice)
     this.props.saveSelection(this.props.questionName, clickedValue)

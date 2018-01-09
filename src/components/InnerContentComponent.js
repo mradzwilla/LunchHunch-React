@@ -3,6 +3,7 @@ import StartMenuComponent from '../components/StartMenuComponent';
 import LocationQuestionComponent from '../components/LocationQuestionComponent';
 import DistanceQuestionComponent from '../components/DistanceQuestionComponent';
 import PreferenceQuestionComponent from '../components/PreferenceQuestionComponent';
+import SummaryComponent from '../components/SummaryComponent';
 import ResultsComponent from '../components/ResultsComponent';
 
 //This component's render switches on the current step of the form to return the appropriate component
@@ -11,7 +12,7 @@ class InnerContentComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 3,
+      step: 9,
       foodArray: ["chinese", "pizza", "italian", "latin", "burgers", "sandwiches", "salad", "korean", "mexican", "japanese", "delis", "indpak", "sushi", "newamerican", "tradamerican", "caribbean", "diners", "seafood", "thai", "asianfusion", "bbq", "mediterranean", "buffets", "cheesesteaks", "chicken_wings", "comfortfood", "fishnchips", "foodstands", "gastropubs", "hotdogs", "soulfood", "soup", "tex-mex", "waffles"],
       selection: {}
     };
@@ -41,17 +42,13 @@ class InnerContentComponent extends Component {
     var currentArray = this.state.foodArray
     var newArray = currentArray.filter(e => value.indexOf(e) < 0)
 
-    console.log(newArray)
     this.setState({
       foodArray: newArray
     })
   }
   saveSelection(questionName, choice){
-    console.log('Save selection')
     var newSelections = this.state.selection
-    console.log(newSelections)
     newSelections[questionName] = choice
-    console.log(newSelections)
     this.setState({
       selection: newSelections
     })
@@ -145,7 +142,14 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 8:
-        return <ResultsComponent selection={this.state.selection}/>
+        return <SummaryComponent 
+                selection={this.state.selection}
+                nextStep={this.nextStep}
+                />
+      case 9:
+        return <ResultsComponent 
+                foodArray={this.state.foodArray}
+                />
       default:
         return <StartMenuComponent/>
     }
