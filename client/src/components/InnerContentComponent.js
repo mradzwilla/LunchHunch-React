@@ -14,7 +14,9 @@ class InnerContentComponent extends Component {
     this.state = {
       step: 0,
       foodArray: ["chinese", "pizza", "italian", "latin", "burgers", "sandwiches", "salad", "korean", "mexican", "japanese", "delis", "indpak", "sushi", "newamerican", "tradamerican", "caribbean", "diners", "seafood", "thai", "asianfusion", "bbq", "mediterranean", "buffets", "cheesesteaks", "chicken_wings", "comfortfood", "fishnchips", "foodstands", "gastropubs", "hotdogs", "soulfood", "soup", "tex-mex", "waffles"],
-      selection: {}
+      selection: {},
+      zip: '',
+      coordinates: []
     };
     this.getCoordinates = this.getCoordinates.bind(this)
     this.nextStep = this.nextStep.bind(this)
@@ -165,6 +167,7 @@ class InnerContentComponent extends Component {
                 foodArray={this.state.foodArray}
                 latitude={this.state.coordinates.latitude}
                 longitude={this.state.coordinates.longitude}
+                zip={this.state.zip}
                 />
       default:
         return <StartMenuComponent/>

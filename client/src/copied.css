@@ -351,13 +351,13 @@ input[type="submit"]:hover{
 	color: white;
 }
 
-#restaurant-name {
+.restaurant-name {
 	font-size: 25px;
 	font-weight: bold;
 	line-height: 48px;
 }
 
-#result-body-container {
+.result-body-container {
 	height: 200px;
 	width: 80%;
 	margin: 20px auto;
@@ -365,31 +365,31 @@ input[type="submit"]:hover{
 	border-bottom: 3px solid black;
 }
 
-#result-body-left {
+.result-body-left {
 	float: left;
 	width: 50%;
 	height: 200px;
 	text-align: center;
 }
 
-#result-body-right {
+.result-body-right {
 	text-align: right;
 	height: 200px;
 	padding: 8px 18px;
 }
 
-#rating {
+.rating {
 	vertical-align: text-bottom;
 }
 
-#restaurant-image {
+.restaurant-image {
 	border-radius: 10%;
 	border-top-right-radius: 0;
 	border-top-left-radius: 0;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#address {
+.address {
 	font-size: 16px;
 	line-height: 20px;
 }
@@ -420,10 +420,13 @@ input[type="submit"]:hover{
 	transition: all 0.3s ease-out;
 }
 
-#choice-for-today {
+.choice-for-today {
   animation-name: colorchange;
   animation-duration: 30s;
   animation-iteration-count: infinite;
+  color: crimson; 
+  font-size: 35px; 
+  text-decoration: underline
 }
 
 @keyframes colorchange {

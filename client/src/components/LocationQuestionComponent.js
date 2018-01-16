@@ -34,7 +34,7 @@ class LocationQuestionComponent extends Component {
       {(this.state.showZip) ?
         <div>
         <input placeholder='Zip' onChange={this.updateZip}></input> 
-        <button>Submit</button>
+        <button onClick={()=> {this.props.nextStep()}}>Submit</button>
         </div>
         : ''
        }
