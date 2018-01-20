@@ -14,9 +14,7 @@ class PreferenceQuestionComponent extends Component {
   	return(
   	  <div className={this.props.classProp}>
         <div className="question">
-          <br /><br />
           <span className='questionText'>Question {this.props.questionNumber}/6:</span>
-          <br />
           <div className="animated flipInX">
             {this.props.headerText}
           </div>

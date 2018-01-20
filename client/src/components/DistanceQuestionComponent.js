@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
-import 'react-rangeslider/lib/index.css'; // To include the default styles
+//import 'react-rangeslider/lib/index.css'; // To include the default styles
 
 class DistanceQuestionComponent extends Component {
   constructor(props) {

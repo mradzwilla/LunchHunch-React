@@ -4,10 +4,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div id="content-box">
-          <div id="header"/>
-          <div id="content">
-            <div id="body">
+        <div className="content-box">
+          <div className="header"/>
+          <div className="content">
+            <div className="body">
               <InnerContentComponent/>
             </div>
           </div>
