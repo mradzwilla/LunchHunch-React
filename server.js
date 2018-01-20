@@ -48,7 +48,14 @@ app.get('/api/results', (req, res) => {
 		  console.log(e);
 		});	
   	}
-
 });
 
+app.get('/api/photos', (req, res) => {
+	var businessId = req.query.businessId
+	client.business(businessId).then(response => {
+	  return res.json(response.body)
+	}).catch(e => {
+	  console.log(e);
+	});
+})
 app.listen(app.get('port'), () => console.log('Example app listening on port 3000!'))

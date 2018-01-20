@@ -8,7 +8,7 @@ class StartMenuComponent extends Component {
     <div>
       <img id="logo" className="animated bounce" src={logo} width="300" alt="OK"/>
         <div className="question">
-        <a id="start_btnz" data-remote="true" rel="nofollow" onClick={() => {this.props.nextStep()}}>FIND ME A PLACE TO EAT</a>    
+        <a className="start_btnz" onClick={() => {this.props.nextStep()}}>FIND ME A PLACE TO EAT</a>    
           <div id="yelp-logo">
             <span>Powered by  </span>
             <img src={yelp_logo} alt="Yelp!"/>

@@ -26,16 +26,18 @@ class InnerContentComponent extends Component {
   }
 
   getCoordinates(){
-    var showPosition = (position) => {
+    var setPosition = (position) => {
+      var nextStep = this.state.step + 1
       this.setState({
-      coordinates:{
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }
-    })
+        coordinates:{
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        },
+        step: nextStep
+      })
     }
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(setPosition);
     }
   }  
   returnPreference(value){

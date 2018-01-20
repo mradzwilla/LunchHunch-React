@@ -21,7 +21,8 @@ class LocationQuestionComponent extends Component {
   }
   handleClick(){
     this.props.getCoordinates();
-    this.props.nextStep();
+    //nextStep call has been moved to async getCoordinates function 
+    //this.props.nextStep();
   }
   render() {
     //Render will be a button with the get coordinates method
@@ -29,12 +30,12 @@ class LocationQuestionComponent extends Component {
   	return(
   	  <div>
   	  <h1>What is your location</h1>
-      <button onClick={() => {this.handleClick()}}>Get Coordinates</button>
+      <button className="start_btnz" onClick={() => {this.handleClick()}}>Get Coordinates</button>
       <a onClick={this.toggleZipField}>Enter manually</a>
       {(this.state.showZip) ?
         <div>
         <input placeholder='Zip' onChange={this.updateZip}></input> 
-        <button onClick={()=> {this.props.nextStep()}}>Submit</button>
+        <button className="start_btnz" onClick={()=> {this.props.nextStep()}}>Submit</button>
         </div>
         : ''
        }

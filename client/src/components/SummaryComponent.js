@@ -21,7 +21,7 @@ class SummaryComponent extends Component {
       <div className="summary">
         {this.state.text}
       </div>
-      <div className="sweep-to-right" onClick={() => {this.props.nextStep()}}>
+      <div className="sweep-to-right summary-button" onClick={() => {this.props.nextStep()}}>
         LET'S GET YOU FED
       </div>
     </div>

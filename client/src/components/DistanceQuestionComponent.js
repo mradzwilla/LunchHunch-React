@@ -37,7 +37,7 @@ class DistanceQuestionComponent extends Component {
         orientation="horizontal"
         onChange={this.handleOnChange}
       /> 
-      <button onClick={() => {this.props.nextStep()}}>Submit</button> 	
+      <button className="start_btnz" onClick={() => {this.props.nextStep()}}>Submit</button> 	
       </div>
       )
   }

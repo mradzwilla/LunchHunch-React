@@ -9,14 +9,22 @@ class ResultsComponent extends Component {
     this.state = {
       businesses: []
     };
+    this.nextBusiness = this.nextBusiness.bind(this)
   }
+
   componentWillMount(){
     let foodArr = 'foodArr=' + this.props.foodArray
-    let location;
+    console.log(this.props)
+    let location = this.getLocationQuery();
+    console.log(location)
+    var self = this
+
     if (this.props.latitude && this.props.longitude){
       location = 'latitude=' + this.props.latitude + '&longitude=' + this.props.longitude
     } else if (this.props.zip) {
       location = 'zip=' + this.props.zip
+    } else {
+      alert('whoops')
     }
 
     let queryString = foodArr + '&' + location
@@ -26,11 +34,70 @@ class ResultsComponent extends Component {
       var businesses = shuffle(response['businesses'])
       //Need to throw an error if resp['total'] = 0, handle error
       //More info on the resp object here: https://www.yelp.com/developers/documentation/v3/business_search
+      var currentBusiness = businesses[0]
+      let photosQueryString = location + "&businessId=" + currentBusiness['id']
+      // Client.getPhotos(photosQueryString, resp => {
+      //   var response = JSON.parse(resp)
+      //   console.log(response)
+      //   currentBusiness['photos'] = response.photos
+      // })
+      self.getPhotos(currentBusiness, photosQueryString)
       this.setState({
         index: 0,
         businesses: businesses
       });
     });
+  }
+  getLocationQuery(){
+    var location;
+    if (this.props.latitude && this.props.longitude){
+      location = 'latitude=' + this.props.latitude + '&longitude=' + this.props.longitude
+    } else if (this.props.zip) {
+      location = 'zip=' + this.props.zip
+    }
+    return location
+  }
+  // componentWillUpdate(nextProps, nextState){
+  //   // if (nextState.businesses.length <= 0){return true}
+  //   //   var newIndex = nextState.index
+  //   //   var nextBusiness = nextState.businesses[newIndex]
+  //   //   console.log('Update')
+  //   //   console.log(nextBusiness)
+  //   //   if (!nextBusiness.hasOwnProperty('photos')){
+
+  //   //     console.log('Do the thing')
+  //   //     nextBusiness['photos'] = ['yolo,','photos']
+  //   //     return false
+  //   //   }
+  //   // return true
+  // }
+  getPhotos(businessObj, queryString){
+    Client.getPhotos(queryString, resp => {
+      var response = JSON.parse(resp)
+      console.log(response)
+      businessObj['photos'] = response.photos
+    })
+  }
+  nextBusiness(){
+    var newIndex = this.state.index + 1
+    var nextBusiness = this.state.businesses[newIndex]
+
+    //If there are no more options, go back to beginning
+    if (!nextBusiness){
+      newIndex = 0; 
+      nextBusiness = this.state.businesses[0]
+    }
+
+    //If next business does not have all photos, get them
+    if (!nextBusiness.hasOwnProperty('photos')){
+      let location = this.getLocationQuery()
+      let queryString = location + "&businessId=" + nextBusiness['id']
+      this.getPhotos(nextBusiness, queryString)
+    }
+
+    this.setState({
+      index: newIndex
+    })
   }
   getRatingUrl(){
    //rating_img_url has been deprecated in new Yelp API
@@ -73,6 +140,9 @@ class ResultsComponent extends Component {
             </div>
           </div>
         </div>
+        <a className="search-again" onClick={() => {this.nextBusiness()}}>
+          NO, THAT PLACE LOOKS BAD
+        </a>
       </div>
       );
     }

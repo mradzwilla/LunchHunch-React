@@ -141,7 +141,7 @@ div#body {
   to { opacity: 1;}
 }
 
-#start_btnz {
+.start_btnz {
   text-decoration: none;
   background-color: white;
   color: white;
@@ -149,7 +149,7 @@ div#body {
   padding: 12px 50px;
   border-radius: 5px;
   animation-name: bgcchange;
-  animation-delay: 1s;
+/*  animation-delay: 1s;*/  
   animation-duration: 4s;
   animation-iteration-count: infinite;
 }
@@ -350,7 +350,11 @@ input[type="submit"]:hover{
 	transform: scaleX(1);
 	color: white;
 }
-
+.summary-button{
+  font-size: 16px;
+  border: 0;
+  padding: 16px 40px;
+}
 .restaurant-name {
 	font-size: 25px;
 	font-weight: bold;
@@ -408,13 +412,13 @@ input[type="submit"]:hover{
 	transition: all 0.3s ease-out;
 }
 
-#search-again {
+.search-again {
 	text-decoration: none;
 	font-size: 22px;
 	color: black;
 }
 
-#search-again:hover {
+.search-again:hover {
 	color: lightseagreen;
 	background-color: transparent; 
 	transition: all 0.3s ease-out;

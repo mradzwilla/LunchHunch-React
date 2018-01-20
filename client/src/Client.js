@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 function search(query, cb) {
-  console.log("Query:" + query)
+  console.log(query)
   return fetch(`api/results?${query}`, {
     accept: "application/json"
   })
@@ -24,5 +24,15 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { search };
+function getPhotos(query, cb){
+  console.log(query)
+  return fetch(`api/photos?${query}`,{
+    accept: "application/json"
+  })    
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+}
+
+const Client = { search, getPhotos };
 export default Client;
