@@ -13,13 +13,13 @@ class ResultsComponent extends Component {
     };
     this.nextBusiness = this.nextBusiness.bind(this)
     this.createCarousel = this.createCarousel.bind(this)
+    this.getRatingUrl = this.getRatingUrl.bind(this)
   }
 
   componentWillMount(){
     let foodArr = 'foodArr=' + this.props.foodArray
     console.log(this.props)
     let location = this.getLocationQuery();
-    console.log(location)
     var self = this
 
     if (this.props.latitude && this.props.longitude){
@@ -28,7 +28,10 @@ class ResultsComponent extends Component {
       location = 'zip=' + this.props.zip
     }
 
-    let queryString = foodArr + '&' + location
+    let priceQuery = 'price=' + this.props.price
+    let distanceQuery = 'distance=' + this.props.distance 
+    let queryString = foodArr + '&' + location + '&' + priceQuery + '&' + distanceQuery
+
     //Argument to client should be a query string
     Client.search(queryString, resp => {
       var response = JSON.parse(resp)
@@ -133,11 +136,31 @@ class ResultsComponent extends Component {
     }
   }
 
-  getRatingUrl(){
-   //rating_img_url has been deprecated in new Yelp API
-   //This function will take the current rating and return the correct image path
-
-   return "" 
+  getRatingUrl(rating){
+   //rating_img_url (used in original project) has been deprecated in new Yelp API
+   //Now we need to match busines rating to correct image path
+   switch (rating){
+    case 1:
+      return "images/yelp_stars/regular_1@3x.png"
+    case 1.5:
+      return "images/yelp_stars/regular_1_half@3x.png"
+    case 2:
+      return "images/yelp_stars/regular_2@3x.png"
+    case 2.5:
+      return "images/yelp_stars/regular_2_half@3x.png"
+    case 3:
+      return "images/yelp_stars/regular_3@3x.png"
+    case 3.5:
+      return "images/yelp_stars/regular_3_half@3x.png"
+    case 4:
+      return "images/yelp_stars/regular_4@3x.png"
+    case 4.5:
+      return "images/yelp_stars/regular_4_half@3x.png"
+    case 5:
+      return "images/yelp_stars/regular_5@3x.png"
+    default:
+      return "images/yelp_stars/regular_0@3x.png"
+   }
   }
   render() {
 
@@ -168,20 +191,22 @@ class ResultsComponent extends Component {
             <div className="restaurant-carousel">
               {
                 <Carousel showArrows={true} showStatus={true} showIndicators={true} showThumbs={false}>
-                  {   currentBusiness.photos.map((photoPath, index) => {
-                        return (
-                          <div key={index}>
-                            <img src={photoPath} />
-                          </div>
-                        )
-                      })
+                  { currentBusiness.photos.map((photoPath, index) => {
+                      return (
+                        <div key={index}>
+                          <img src={photoPath} />
+                        </div>
+                      )
+                    })
                   }
                 </Carousel>
               }
             </div>
           </div>
           <div className="result-body-right">
-            <img className="rating" src={ratingUrlPath}/> {currentBusiness.review_count} reviews<br/>
+            <img className="rating" src={this.getRatingUrl(currentBusiness.rating)} alt="Rating images"/><br />
+            <div>{currentBusiness.review_count} reviews <div className="price">{currentBusiness.price}</div></div>
+            <a href={"tel:" + currentBusiness.phone}>{currentBusiness.display_phone}</a><br />
             <div className="address">
               <div>{currentBusiness.location.display_address[0]}</div>
               <div>{currentBusiness.location.display_address[1]}</div>

@@ -3,6 +3,7 @@ import StartMenuComponent from '../components/StartMenuComponent';
 import LocationQuestionComponent from '../components/LocationQuestionComponent';
 import DistanceQuestionComponent from '../components/DistanceQuestionComponent';
 import PreferenceQuestionComponent from '../components/PreferenceQuestionComponent';
+import PriceQuestionComponent from '../components/PriceQuestionComponent';
 import SummaryComponent from '../components/SummaryComponent';
 import ResultsComponent from '../components/ResultsComponent';
 
@@ -16,7 +17,7 @@ class InnerContentComponent extends Component {
       foodArray: ["chinese", "pizza", "italian", "latin", "burgers", "sandwiches", "salad", "korean", "mexican", "japanese", "delis", "indpak", "sushi", "newamerican", "tradamerican", "caribbean", "diners", "seafood", "thai", "asianfusion", "bbq", "mediterranean", "buffets", "cheesesteaks", "chicken_wings", "comfortfood", "fishnchips", "foodstands", "gastropubs", "hotdogs", "soulfood", "soup", "tex-mex", "waffles"],
       selection: {},
       zip: '',
-      coordinates: []
+      coordinates: [],
     };
     this.getCoordinates = this.getCoordinates.bind(this)
     this.nextStep = this.nextStep.bind(this)
@@ -42,9 +43,6 @@ class InnerContentComponent extends Component {
         navigator.geolocation.getCurrentPosition(setPosition);
     }
   }  
-  returnPreference(value){
-    var options = this.state
-  }
   updatePreference(value){
     var currentArray = this.state.foodArray
     var newArray = currentArray.filter(e => value.indexOf(e) < 0)
@@ -146,20 +144,16 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 7:
-        //The API can now handle price filtering so this needs to be added
-        return <PreferenceQuestionComponent 
+        return <PriceQuestionComponent 
                   questionNumber='6'
                   questionName='price'
                   headerText="How deep are your pockets?"
                   optionOneText='Deep enough'
                   imageOne='images/rich.svg'
-                  choiceOneSlice={[]}
                   optionTwoText="I'm broke"
                   imageTwo='images/poor.png'
-                  choiceTwoSlice={[]}
                   nextStep={this.nextStep}
-                  updatePreference={this.updatePreference}
-                  saveSelection={this.saveSelection}
+                  updateParentState={this.updateParentState}
                 />
       case 8:
         return <SummaryComponent 
@@ -172,11 +166,12 @@ class InnerContentComponent extends Component {
                 latitude={this.state.coordinates.latitude}
                 longitude={this.state.coordinates.longitude}
                 zip={this.state.zip}
+                distance={this.state.range}
+                price={this.state.price}
                 />
       default:
         return <StartMenuComponent/>
     }
-
   }
 }
 

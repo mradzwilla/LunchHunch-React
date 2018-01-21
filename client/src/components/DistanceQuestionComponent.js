@@ -11,6 +11,7 @@ class DistanceQuestionComponent extends Component {
     	longitude: ''
     };
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleOnChange(value){
@@ -19,9 +20,21 @@ class DistanceQuestionComponent extends Component {
       range: value
     });
 
+    //Yelp API requires distance in meters
+    var distanceInMeters = value * 1609.34
     this.props.updateParentState({
-      range: value,
+      range: distanceInMeters,
     })
+  }
+  handleClick(){
+    this.props.nextStep()
+
+    //Yelp API requires distance in meters
+    var distanceInMeters = this.state.range * 1609.34
+    this.props.updateParentState({
+      range: distanceInMeters,
+    })
+
   }
   render() {
   	let { range } = this.state
@@ -37,7 +50,7 @@ class DistanceQuestionComponent extends Component {
         orientation="horizontal"
         onChange={this.handleOnChange}
       /> 
-      <button className="start_btnz" onClick={() => {this.props.nextStep()}}>Submit</button> 	
+      <button className="start_btnz" onClick={() => {this.handleClick()}}>Submit</button> 	
       </div>
       )
   }

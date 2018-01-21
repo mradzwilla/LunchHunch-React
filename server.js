@@ -19,7 +19,8 @@ app.get('/api/results', (req, res) => {
 	const latitude = req.query.latitude;
 	const longitude = req.query.longitude;
 	const zip = req.query.zip
-	// const distance = req.query.distance
+	const price = req.query.price
+	const distance = req.query.distance
 
 	if (!foodArr) {
     res.json({
@@ -32,7 +33,9 @@ app.get('/api/results', (req, res) => {
 		client.search({
 		  categories: foodArr,
 		  latitude: latitude,
-		  longitude: longitude
+		  longitude: longitude,
+		  price: price,
+		  distance: distance
 		}).then(response => {
 		  	return res.json(response.body)
 		}).catch(e => {
@@ -41,7 +44,9 @@ app.get('/api/results', (req, res) => {
   	} else {
  		client.search({
 		  categories: foodArr,
-		  location: zip
+		  location: zip,
+		  price: price,
+		  distance: distance
 		}).then(response => {
 		  	return res.json(response.body)
 		}).catch(e => {

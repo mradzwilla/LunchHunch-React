@@ -385,7 +385,10 @@ input[type="submit"]:hover{
 	height: 200px;
 	padding: 8px 18px;
 }
-
+.result-body-right a{
+  text-decoration: none;
+  color: black;
+}
 .rating {
 	vertical-align: text-bottom;
 }
@@ -485,4 +488,9 @@ input[type="submit"]:hover{
     padding: 10px;
     font-size: 16px;
     margin-bottom: 15px;
+}
+.price{
+  display: inline-block;
+  margin-left: 4px;
+  color: crimson;
 }

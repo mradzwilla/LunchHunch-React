@@ -19,7 +19,9 @@ class SummaryComponent extends Component {
     <div className="magic openDownLeft">
       <div className="summary-title">This is what we're working with:</div> 
       <div className="summary">
+        <p>
         {this.state.text}
+        </p>
       </div>
       <div className="sweep-to-right summary-button" onClick={() => {this.props.nextStep()}}>
         LET'S GET YOU FED
