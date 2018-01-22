@@ -30,7 +30,7 @@ class InnerContentComponent extends Component {
     var setPosition = (position) => {
       //For edge case where user clicks for coordinates but then enters zip
       //Only advance the step if the user is still on the location question
-      var nextStep = this.state.step == 1 ? 2 : this.state.step
+      var nextStep = this.state.step === 1 ? 2 : this.state.step
       this.setState({
         coordinates:{
           latitude: position.coords.latitude,

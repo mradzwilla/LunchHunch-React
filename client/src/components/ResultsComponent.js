@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Client from "../Client"; //Handles call to server to connect with Yelp
 import shuffle from 'shuffle-array';
 import {Carousel} from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {RiseLoader} from 'halogenium';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-//Also need to set up a loading screen
 class ResultsComponent extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +76,7 @@ class ResultsComponent extends Component {
       //One image is returned from original API call
       //Sort the photos so that the first displayed is the same as the one already shown on the page
       for (let i=0;i<photos.length;i++){
-        if (photos[i] == currentPhoto){
+        if (photos[i] === currentPhoto){
           let photo = photos[i]
           photos.splice(i, 1)
           photos.unshift(photo)
@@ -163,17 +163,15 @@ class ResultsComponent extends Component {
    }
   }
   render() {
-
       if (this.state.businesses.length <= 0){
       //Return loader if undefined
       return (
         <div>
-          Loading your results
+          <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
         </div>
       ) 
       } else {
       var currentBusiness = this.state.businesses[this.state.index]
-      var ratingUrlPath = this.getRatingUrl()
 
       return (
       <div>
@@ -205,7 +203,7 @@ class ResultsComponent extends Component {
           </div>
           <div className="result-body-right">
             <img className="rating" src={this.getRatingUrl(currentBusiness.rating)} alt="Rating images"/><br />
-            <div>{currentBusiness.review_count} reviews <div className="price">{currentBusiness.price}</div></div>
+            <div>{currentBusiness.review_count} reviews <span className="price">{currentBusiness.price}</span></div>
             <a href={"tel:" + currentBusiness.phone}>{currentBusiness.display_phone}</a><br />
             <div className="address">
               <div>{currentBusiness.location.display_address[0]}</div>

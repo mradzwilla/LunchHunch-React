@@ -124,6 +124,7 @@ body{
 #yelp-logo {
   animation-name: fadeIn;
   animation-duration: 6s;
+  padding-top: 10px;
 }
 
 #yelp-logo span {
@@ -375,7 +376,7 @@ input[type="submit"]:hover{
 
 .result-body-left {
 	float: left;
-	width: 50%;
+	width: 55%;
 	height: 200px;
 	text-align: center;
 }
@@ -383,7 +384,7 @@ input[type="submit"]:hover{
 .result-body-right {
 	text-align: right;
 	height: 200px;
-	padding: 8px 18px;
+	padding: 28px 18px;
 }
 .result-body-right a{
   text-decoration: none;
@@ -480,6 +481,9 @@ input[type="submit"]:hover{
 .locationQuestion .ctaText{
   padding: 10px 0px;
 }
+.loader{
+  padding: 40px;
+}
 .zipForm input{
     width: 206.59px;
     border: 1px solid black;
@@ -493,4 +497,9 @@ input[type="submit"]:hover{
   display: inline-block;
   margin-left: 4px;
   color: crimson;
+}
+.startCopy{
+  width: 100%;
+  height: auto;
+  font-size: 30px;
 }

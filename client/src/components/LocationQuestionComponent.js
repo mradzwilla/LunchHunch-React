@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {RiseLoader} from 'halogenium';
 
 class LocationQuestionComponent extends Component {
   constructor(props) {
@@ -33,9 +34,12 @@ class LocationQuestionComponent extends Component {
 
   	return(
   	  <div className="locationQuestion">
-  	  <h1>What is your location</h1>
+  	  <h1>What is your location?</h1>
       { (this.state.gettingCoordinates) ?
-          "Getting your location" :
+          <div>
+          <div>Getting your location</div>
+          <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
+          </div> :
           <button className="start_btnz" onClick={() => {this.handleClick()}}>Get Coordinates</button>
       }
       <div className="ctaText" onClick={this.toggleZipField}>Enter manually</div>

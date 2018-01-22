@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class PreferenceQuestionComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleClick(arrayToSlice, clickedValue){
     this.props.nextStep()
@@ -21,11 +18,11 @@ class PreferenceQuestionComponent extends Component {
         </div>
         <ul className="answer">
           <li className="two-choices" onClick={() => {this.handleClick(this.props.choiceOneSlice, true)}}>
-            <img src={this.props.imageOne}/>
+            <img src={this.props.imageOne} alt="Option 1"/>
             <a className="two-choices-link">{this.props.optionOneText}</a>
           </li>
           <li className="two-choices" onClick={() => {this.handleClick(this.props.choiceTwoSlice, false)}}>
-            <img src={this.props.imageTwo}/>
+            <img src={this.props.imageTwo} alt="Option 2"/>
             <a className="two-choices-link">{this.props.optionTwoText}</a>
           </li>
         </ul>
