@@ -9,7 +9,8 @@ class ResultsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      businesses: []
+      businesses: [],
+      error: false
     };
     this.nextBusiness = this.nextBusiness.bind(this)
     this.createCarousel = this.createCarousel.bind(this)
@@ -37,6 +38,12 @@ class ResultsComponent extends Component {
       var response = JSON.parse(resp)
       var businesses = shuffle(response['businesses'])
       //Need to throw an error if resp['total'] = 0, handle error
+      if (resp['total'] == 0){
+        this.setState({
+          error: true
+        })
+        return
+      }
       //More info on the resp object here: https://www.yelp.com/developers/documentation/v3/business_search
       var currentBusiness = businesses[0]
 
@@ -163,13 +170,20 @@ class ResultsComponent extends Component {
    }
   }
   render() {
-      if (this.state.businesses.length <= 0){
-      //Return loader if undefined
-      return (
-        <div>
-          <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
-        </div>
-      ) 
+      if (this.state.error == true){
+        return (
+          <div>
+            <p>Hmmm... something went wrong</p>
+            <p>Maybe there's a food truck nearby?</p>
+          </div>
+        )
+      } else if (this.state.businesses.length <= 0){
+        //Return loader if undefined
+        return (
+          <div>
+            <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
+          </div>
+        ) 
       } else {
       var currentBusiness = this.state.businesses[this.state.index]
 

@@ -3,7 +3,8 @@
 const express = require('express')
 const app = express()
 const yelp = require('yelp-fusion');
-const apiKey = "gw3MOvphtNJ4hT006ZEdCQ2kX-m972JTOH_Zx85nAGgGcWYug4jLuWWWF_B461qkoVOjRL6o3RzZmtYnt6qwzTjzfOdBxmogyHF-_fxZASC_l04bLqOGAzfLE3ZSWnYx";
+const apiKey = process.env.YELP_API_KEY
+console.log(apiKey)
 const client = yelp.client(apiKey);
 
 app.set('port', (process.env.PORT || 3001));
