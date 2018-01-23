@@ -17,6 +17,7 @@
     "yelp-fusion": "^2.0.3"
   },
   "scripts": {
+    "prep": "npm install --only=dev && npm install && npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
