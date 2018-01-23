@@ -503,3 +503,17 @@ input[type="submit"]:hover{
   height: auto;
   font-size: 30px;
 }
+
+@media screen and (max-width: 900px) {
+  .result-body-container{
+    height: auto;
+  }
+  .result-body-left, .result-body-right{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .result-body-right{
+    text-align: center;
+    height: auto;
+  }
+}
