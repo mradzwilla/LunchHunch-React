@@ -511,6 +511,9 @@ input[type="submit"]:hover{
   .result-body-left, .result-body-right{
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    float: none;
+    width: 75%;
   }
   .result-body-right{
     text-align: center;
