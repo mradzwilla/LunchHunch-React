@@ -4,7 +4,7 @@
   "description": "Find out what's for lunch!",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently \"npm run server\" \"npm install --only=dev && npm install && npm run run client\"",
     "server": "node server.js",
     "client": "node start-client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
