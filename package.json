@@ -4,7 +4,6 @@
   "description": "Find out what's for lunch!",
   "main": "server.js",
   "scripts": {
-    //"start": "concurrently \"npm run server\" \"npm run client\"",
     "start": "npm run server",
     "server": "node server.js",
     "client": "node start-client.js",
