@@ -186,6 +186,7 @@ class ResultsComponent extends Component {
         ) 
       } else {
       var currentBusiness = this.state.businesses[this.state.index]
+      var googleMapsURL = 'https://www.google.com/maps/search/?api=1&query='+currentBusiness.coordinates.latitude+','+currentBusiness.coordinates.longitude +'&zoom=7'
 
       return (
       <div>
@@ -223,7 +224,15 @@ class ResultsComponent extends Component {
               <div>{currentBusiness.location.display_address[0]}</div>
               <div>{currentBusiness.location.display_address[1]}</div>
             </div>
+            <div className="googleMaps">
+              <a href={googleMapsURL} target="_blank"><img src="images/google-maps-icon.png" alt="Google Maps"/>
+              </a>
+            </div>
           </div>
+        </div>
+        <div className="results-yelp-logo">
+          <span>Powered by </span>
+          <img src="images/yelp_logo.png" alt="Yelp!"/>
         </div>
         <a className="search-again" onClick={() => {this.nextBusiness()}}>
           NO, THAT PLACE LOOKS BAD

@@ -9,7 +9,7 @@ class StartMenuComponent extends Component {
       <img id="logo" className="animated bounce" src={logo} width="300" alt="OK"/>
         <div className="startCopy">
         <a className="start_btnz" onClick={() => {this.props.nextStep()}}>FIND ME A PLACE TO EAT</a>    
-          <div id="yelp-logo">
+          <div className="yelp-logo">
             <span>Powered by  </span>
             <img src={yelp_logo} alt="Yelp!"/>
           </div>

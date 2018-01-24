@@ -121,19 +121,33 @@ body{
   padding: 40px 0px;
 }
 
-#yelp-logo {
+.yelp-logo {
   animation-name: fadeIn;
   animation-duration: 6s;
   padding-top: 10px;
 }
-
-#yelp-logo span {
+.result-body-right .yelp-logo{
+  margin-top: 
+}
+.yelp-logo span {
   font-size: 11px;
-  color: 'dimgray'; 
-  vertical-align: 'text-top';
+  color: #696969; 
+  vertical-align: inherit;
 }
 
-#yelp-logo img {
+.yelp-logo img {
+  margin-top: 10px;
+  width: 50px;
+}
+.results-yelp-logo{
+  margin-bottom: 12px;
+}
+.results-yelp-logo span {
+  font-size: 11px;
+  color: #696969; 
+  vertical-align: bottom;
+}
+.results-yelp-logo img {
   margin-top: 10px;
   width: 50px;
 }
@@ -370,6 +384,7 @@ input[type="submit"]:hover{
 	height: 300px;
 	width: 80%;
 	margin: 20px auto;
+  margin-bottom: 0px;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
 }
@@ -392,6 +407,7 @@ input[type="submit"]:hover{
 }
 .rating {
 	vertical-align: text-bottom;
+  max-width: 100%;
 }
 
 .restaurant-image {
@@ -404,8 +420,21 @@ input[type="submit"]:hover{
 .address {
 	font-size: 16px;
 	line-height: 20px;
+  margin-top: 10px;
 }
-
+.googleMaps{
+  width: 40px;
+  height: auto;
+  display: inline-block;
+}
+.googleMaps a{
+  width: auto;
+  display: block;
+}
+.googleMaps img{
+  width: 100%;
+  display: inline-block;
+}
 #yelp-logo-1 {
 	vertical-align: text-top;
 }
@@ -507,6 +536,9 @@ input[type="submit"]:hover{
 @media screen and (max-width: 900px) {
   .result-body-container{
     height: auto;
+  }
+  .question{
+    padding: 40px 0px 25px 0px;
   }
   .result-body-left, .result-body-right{
     margin-left: auto;
