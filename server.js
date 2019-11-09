@@ -3,6 +3,7 @@
 const express = require('express')
 const app = express()
 const yelp = require('yelp-fusion');
+require('dotenv').config();
 const apiKey = process.env.YELP_API_KEY
 const client = yelp.client(apiKey);
 
@@ -51,7 +52,7 @@ app.get('/api/results', (req, res) => {
 		  	return res.json(response.body)
 		}).catch(e => {
 		  console.log(e);
-		});	
+		});
   	}
 });
 

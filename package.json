@@ -4,7 +4,7 @@
   "description": "Find out what's for lunch!",
   "main": "server.js",
   "scripts": {
-    "start": "npm run server",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
     "client": "node start-client.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,6 +13,7 @@
   "author": "Mike Radzwilla",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.16.2",
     "yelp-fusion": "^2.0.3"
   },
