@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Client from "../Client"; //Handles call to server to connect with Yelp
 import shuffle from 'shuffle-array';
 import {Carousel} from 'react-responsive-carousel';
-import {RiseLoader} from 'halogenium';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {RiseLoader} from 'halogenium';
+import { Link } from 'react-router-dom'
+const queryStringParser = require('query-string');
 
 class ResultsComponent extends Component {
   constructor(props) {
@@ -18,56 +20,73 @@ class ResultsComponent extends Component {
   }
 
   componentWillMount(){
-    let foodArr = 'foodArr=' + this.props.foodArray
-    console.log(this.props)
+    console.log(this.props.location.search);
+
+    const { foodArr, price, distance } = queryStringParser.parse(this.props.location.search)
+    console.log(price)
+    let foodArrParam = 'foodArr=' + foodArr
     let location = this.getLocationQuery();
     var self = this
+    console.log(location)
+    // if (this.props.location.state.latitude && this.props.location.state.longitude){
+    //   location = 'latitude=' + this.props.location.state.latitude + '&longitude=' + this.props.location.state.longitude
+    // } else if (this.props.location.state.zip) {
+    //   location = 'zip=' + this.props.location.state.zip
+    // }
 
-    if (this.props.latitude && this.props.longitude){
-      location = 'latitude=' + this.props.latitude + '&longitude=' + this.props.longitude
-    } else if (this.props.zip) {
-      location = 'zip=' + this.props.zip
-    }
-
-    let priceQuery = 'price=' + this.props.price
-    let distanceQuery = 'distance=' + this.props.distance 
-    let queryString = foodArr + '&' + location + '&' + priceQuery + '&' + distanceQuery
+    let priceQuery = 'price=' + price
+    let distanceQuery = 'distance=' + distance
+    let queryString = foodArrParam + '&' + location + '&' + priceQuery + '&' + distanceQuery
 
     //Argument to client should be a query string
-    Client.search(queryString, resp => {
-      var response = JSON.parse(resp)
-      var businesses = shuffle(response['businesses'])
-      //Need to throw an error if resp['total'] = 0, handle error
-      if (resp['total'] == 0){
+    if (foodArr && price && distance && location){
+      Client.search(queryString, resp => {
+        var response = JSON.parse(resp)
+        console.log(response)
+        var businesses = shuffle(response['businesses'])
+
+        if (resp['total'] == 0){
+          this.setState({
+            error: true
+          })
+          return
+        }
+        //More info on the resp object here: https://www.yelp.com/developers/documentation/v3/business_search
+        var currentBusiness = businesses[0]
+
+        businesses.map((business) => {
+          if (!business.hasOwnProperty('photos')){
+            business['photos'] = [business.image_url]
+          }
+        })
+        let photosQueryString = location + "&businessId=" + currentBusiness['id']
+
+        self.getPhotos(currentBusiness, photosQueryString)
+        this.setState({
+          index: 0,
+          businesses: businesses
+        });
+      }).catch((r) => {
         this.setState({
           error: true
         })
-        return
-      }
-      //More info on the resp object here: https://www.yelp.com/developers/documentation/v3/business_search
-      var currentBusiness = businesses[0]
-
-      businesses.map((business) => {
-        if (!business.hasOwnProperty('photos')){
-          business['photos'] = [business.image_url]
-        }
-      })
-      let photosQueryString = location + "&businessId=" + currentBusiness['id']
-
-      self.getPhotos(currentBusiness, photosQueryString)
-      this.setState({
-        index: 0,
-        businesses: businesses
       });
-    });
+    } else {
+      this.setState({
+        error: true
+      })
+    }
   }
   getLocationQuery(){
+    const { latitude, longitude, zip } = queryStringParser.parse(this.props.location.search)
+
     var location;
-    if (this.props.latitude && this.props.longitude){
-      location = 'latitude=' + this.props.latitude + '&longitude=' + this.props.longitude
-    } else if (this.props.zip) {
-      location = 'zip=' + this.props.zip
+    if (latitude && longitude){
+      location = 'latitude=' + latitude + '&longitude=' + longitude
+    } else if (zip) {
+      location = 'zip=' + zip
     }
+
     return location
   }
 
@@ -103,7 +122,7 @@ class ResultsComponent extends Component {
 
     //If there are no more options, go back to beginning
     if (!nextBusiness){
-      newIndex = 0; 
+      newIndex = 0;
       nextBusiness = this.state.businesses[0]
     }
 
@@ -175,6 +194,9 @@ class ResultsComponent extends Component {
           <div>
             <p>Hmmm... something went wrong</p>
             <p>Maybe there's a food truck nearby?</p>
+            <Link to='/'>
+              Start Over
+            </Link>
           </div>
         )
       } else if (this.state.businesses.length <= 0){
@@ -183,7 +205,7 @@ class ResultsComponent extends Component {
           <div>
             <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
           </div>
-        ) 
+        )
       } else {
       var currentBusiness = this.state.businesses[this.state.index]
       var googleMapsURL = 'https://www.google.com/maps/search/?api=1&query='+currentBusiness.coordinates.latitude+','+currentBusiness.coordinates.longitude +'&zoom=7'

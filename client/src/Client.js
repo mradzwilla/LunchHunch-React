@@ -26,7 +26,7 @@ function parseJSON(response) {
 function getPhotos(query, cb){
   return fetch(`api/photos?${query}`,{
     accept: "application/json"
-  })    
+  })
     .then(checkStatus)
     .then(parseJSON)
     .then(cb);

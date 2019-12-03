@@ -5,10 +5,11 @@ import DistanceQuestionComponent from '../components/DistanceQuestionComponent';
 import PreferenceQuestionComponent from '../components/PreferenceQuestionComponent';
 import PriceQuestionComponent from '../components/PriceQuestionComponent';
 import SummaryComponent from '../components/SummaryComponent';
-import ResultsComponent from '../components/ResultsComponent';
+//import ResultsComponent from '../components/ResultsComponent';
+import { Redirect } from 'react-router-dom';
 
 //This component's render switches on the current step of the form to return the appropriate component
-//It might be better to change only save user selection on click and slice the array right before the API call. This would make it much easier to add a back button to the page in the future 
+//It might be better to change only save user selection on click and slice the array right before the API call. This would make it much easier to add a back button to the page in the future
 class InnerContentComponent extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +43,7 @@ class InnerContentComponent extends Component {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition);
     }
-  }  
+  }
   updatePreference(value){
     var currentArray = this.state.foodArray
     var newArray = currentArray.filter(e => value.indexOf(e) < 0)
@@ -66,25 +67,35 @@ class InnerContentComponent extends Component {
       step: this.state.step + 1
     })
   }
+  getLocationQuery(){
+    var location;
+    if (this.state.coordinates.latitude && this.state.coordinates.longitude){
+      location = 'latitude=' + this.state.coordinates.latitude + '&longitude=' + this.state.coordinates.longitude
+    } else if (this.state.zip) {
+      location = 'zip=' + this.state.zip
+    }
+
+    return location
+  }
   render() {
     switch (this.state.step){
       case 0:
-        return <StartMenuComponent 
+        return <StartMenuComponent
                   nextStep={this.nextStep}
                 />
       case 1:
-        return <LocationQuestionComponent 
+        return <LocationQuestionComponent
                   getCoordinates={this.getCoordinates}
-                  updateParentState={this.updateParentState} 
+                  updateParentState={this.updateParentState}
                   nextStep={this.nextStep}
                 />
       case 2:
-        return <DistanceQuestionComponent 
+        return <DistanceQuestionComponent
                   nextStep={this.nextStep}
                   updateParentState={this.updateParentState}
                 />
       case 3:
-        return <PreferenceQuestionComponent 
+        return <PreferenceQuestionComponent
                   questionNumber='2'
                   questionName="mood"
                   headerText="You feelin' good today?"
@@ -99,7 +110,7 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 4:
-        return <PreferenceQuestionComponent 
+        return <PreferenceQuestionComponent
                   questionNumber='3'
                   questionName="weather"
                   headerText="What's it like out there today?"
@@ -114,7 +125,7 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 5:
-        return <PreferenceQuestionComponent 
+        return <PreferenceQuestionComponent
                   questionNumber='4'
                   questionName="spicy"
                   headerText="You feeling frisky, hot stuff?"
@@ -129,7 +140,7 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 6:
-        return <PreferenceQuestionComponent 
+        return <PreferenceQuestionComponent
                   questionNumber='5'
                   questionName='healthy'
                   headerText="Are you eating healthy?"
@@ -144,7 +155,7 @@ class InnerContentComponent extends Component {
                   saveSelection={this.saveSelection}
                 />
       case 7:
-        return <PriceQuestionComponent 
+        return <PriceQuestionComponent
                   questionNumber='6'
                   questionName='price'
                   headerText="How deep are your pockets?"
@@ -156,19 +167,23 @@ class InnerContentComponent extends Component {
                   updateParentState={this.updateParentState}
                 />
       case 8:
-        return <SummaryComponent 
+        return <SummaryComponent
                 selection={this.state.selection}
                 nextStep={this.nextStep}
                 />
       case 9:
-        return <ResultsComponent 
-                foodArray={this.state.foodArray}
-                latitude={this.state.coordinates.latitude}
-                longitude={this.state.coordinates.longitude}
-                zip={this.state.zip}
-                distance={this.state.range}
-                price={this.state.price}
-                />
+        const { foodArray, zip, price } = this.state
+        const { latitude, longitude } = this.state.coordinates
+        const distance = this.state.range
+        const locationParam = this.getLocationQuery();
+        return (
+          <Redirect
+            to={{
+                pathname: '/results',
+                search: `?foodArr=${foodArray}&${locationParam}&distance=${distance}&price=${price}`
+            }}
+          />
+        )
       default:
         return <StartMenuComponent/>
     }
