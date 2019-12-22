@@ -4,16 +4,18 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^4.8.0",
     "axios": "^0.17.1",
     "file-loader": "^1.1.6",
     "halogenium": "^2.2.3",
     "image-webpack-loader": "^3.4.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-rangeslider": "^2.2.0",
     "react-responsive-carousel": "^3.1.30",
-    "react-scripts": "^1.0.17",
+    "react-scripts": "^1.1.5",
     "shuffle-array": "^1.0.1",
+    "styled-components": "^4.4.1",
     "yelp-fusion": "^2.0.3"
   },
   "scripts": {

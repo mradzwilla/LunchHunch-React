@@ -26,7 +26,7 @@ class LocationQuestionComponent extends Component {
       gettingCoordinates: true
     })
     this.props.getCoordinates();
-    //nextStep call has been moved to async getCoordinates function 
+    //nextStep call has been moved to async getCoordinates function
   }
   render() {
     //Render will be a button with the get coordinates method
@@ -40,13 +40,13 @@ class LocationQuestionComponent extends Component {
           <div>Getting your location</div>
           <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
           </div> :
-          <button className="start_btnz" onClick={() => {this.handleClick()}}>Get Coordinates</button>
+          <button className="next_button" onClick={() => {this.handleClick()}}>Get Coordinates</button>
       }
       <div className="ctaText" onClick={this.toggleZipField}>Enter manually</div>
       {(this.state.showZip) ?
         <div className="zipForm">
-        <input placeholder='Zip' onChange={this.updateZip}></input> 
-        <button className="start_btnz" onClick={()=> {this.props.nextStep()}}>Submit</button>
+        <input placeholder='Zip' onChange={this.updateZip}></input>
+        <button className="next_button" onClick={()=> {this.props.nextStep()}}>Submit</button>
         </div>
         : ''
        }
@@ -56,4 +56,3 @@ class LocationQuestionComponent extends Component {
 }
 
 export default LocationQuestionComponent;
-

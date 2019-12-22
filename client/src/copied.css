@@ -24,7 +24,7 @@ body{
 
 .content {
   max-width: 1022px;
-  
+
   /*height: 525px;*/
   margin: 0 auto;
   overflow: hidden;
@@ -127,11 +127,11 @@ body{
   padding-top: 10px;
 }
 .result-body-right .yelp-logo{
-  margin-top: 
+  margin-top:
 }
 .yelp-logo span {
   font-size: 11px;
-  color: #696969; 
+  color: #696969;
   vertical-align: inherit;
 }
 
@@ -144,7 +144,7 @@ body{
 }
 .results-yelp-logo span {
   font-size: 11px;
-  color: #696969; 
+  color: #696969;
   vertical-align: bottom;
 }
 .results-yelp-logo img {
@@ -156,7 +156,11 @@ body{
   to { opacity: 1;}
 }
 
-.start_btnz {
+.next_button {
+  display: block;
+  cursor: pointer;
+  margin: 0 auto;
+  max-width: 300px;
   text-decoration: none;
   background-color: white;
   color: white;
@@ -164,7 +168,6 @@ body{
   padding: 12px 50px;
   border-radius: 5px;
   animation-name: bgcchange;
-/*  animation-delay: 1s;*/  
   animation-duration: 4s;
   animation-iteration-count: infinite;
 }
@@ -256,7 +259,7 @@ img {
 }
 
 #three-choices {
-  height: 223px;  
+  height: 223px;
   text-decoration: none;
   font-size: 16px;
   display: block;
@@ -457,7 +460,7 @@ input[type="submit"]:hover{
 
 .search-again:hover {
 	color: lightseagreen;
-	background-color: transparent; 
+	background-color: transparent;
 	transition: all 0.3s ease-out;
 }
 
@@ -465,8 +468,8 @@ input[type="submit"]:hover{
   animation-name: colorchange;
   animation-duration: 30s;
   animation-iteration-count: infinite;
-  color: crimson; 
-  font-size: 35px; 
+  color: crimson;
+  font-size: 35px;
   text-decoration: underline
 }
 .choice-for-today a{
@@ -503,7 +506,7 @@ input[type="submit"]:hover{
 .locationQuestion h1{
   padding: 25px 0px;
 }
-.locationQuestion .start_btnz{
+.locationQuestion .next_button{
   display: block;
   margin: 0 auto;
 }

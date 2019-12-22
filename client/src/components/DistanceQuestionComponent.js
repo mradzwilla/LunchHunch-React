@@ -1,6 +1,42 @@
 import React, { Component } from 'react';
-import Slider from 'react-rangeslider';
+//import Slider from 'react-rangeslider';
+import Slider from '@material-ui/core/Slider';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import Input from '@material-ui/core/Input';
 //import 'react-rangeslider/lib/index.css'; // To include the default styles
+
+const PrettoSlider = withStyles({
+  root: {
+    color: 'crimson',
+    height: 8,
+    maxWidth: 800
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus,&:hover,&$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
 
 class DistanceQuestionComponent extends Component {
   constructor(props) {
@@ -14,13 +50,13 @@ class DistanceQuestionComponent extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleOnChange(value){
+  handleOnChange(e, value){
     //Need to set this state so slider will move
     this.setState({
       range: value
     });
 
-    //Yelp API requires distance in meters
+    // //Yelp API requires distance in meters
     var distanceInMeters = value * 1609.34
     this.props.updateParentState({
       range: distanceInMeters,
@@ -36,21 +72,24 @@ class DistanceQuestionComponent extends Component {
     })
 
   }
+
+
   render() {
   	let { range } = this.state
   	return(
   	  <div>
   	  <h1>How far do you want to go?</h1>
   	  <div>{range} miles</div>
-      <Slider
-      	min={1}
-      	max={25}
-      	step={1}
-        value={range}
-        orientation="horizontal"
+      <PrettoSlider
+        valueLabelDisplay="auto"
+        aria-label="pretto slider"
+        defaultValue={20}
+        min={0}
+        max={30}
         onChange={this.handleOnChange}
-      /> 
-      <button className="start_btnz" onClick={() => {this.handleClick()}}>Submit</button> 	
+      />
+
+      <button className="next_button" onClick={() => {this.handleClick()}}>Submit</button>
       </div>
       )
   }
@@ -58,3 +97,11 @@ class DistanceQuestionComponent extends Component {
 
 export default DistanceQuestionComponent;
 
+// <Slider
+// 	min={1}
+// 	max={25}
+// 	step={1}
+//   value={range}
+//   orientation="horizontal"
+//   onChange={this.handleOnChange}
+// />
