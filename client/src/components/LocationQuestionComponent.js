@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {RiseLoader} from 'halogenium';
+import GeolocationComponent from '../components/GeolocationComponent';
 
 class LocationQuestionComponent extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class LocationQuestionComponent extends Component {
     this.setState({
       gettingCoordinates: true
     })
-    this.props.getCoordinates();
+    // this.props.getCoordinates();
     //nextStep call has been moved to async getCoordinates function
   }
   render() {
@@ -36,10 +37,12 @@ class LocationQuestionComponent extends Component {
   	  <div className="locationQuestion">
   	  <h1>What is your location?</h1>
       { (this.state.gettingCoordinates) ?
-          <div>
-          <div>Getting your location</div>
-          <RiseLoader className="loader" color="crimson" size="18px" margin="4px"/>
-          </div> :
+          <GeolocationComponent
+            callback={function(){alert('done')}}
+            nextStep={this.props.nextStep}
+            setCoordinates={this.props.setCoordinates}
+          />
+           :
           <button className="next_button" onClick={() => {this.handleClick()}}>Get Coordinates</button>
       }
       <div className="ctaText" onClick={this.toggleZipField}>Enter manually</div>

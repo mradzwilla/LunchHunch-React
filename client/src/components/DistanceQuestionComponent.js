@@ -82,8 +82,8 @@ class DistanceQuestionComponent extends Component {
   	  <div>{range} miles</div>
       <PrettoSlider
         valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
+        aria-label="distance slider"
+        defaultValue={range}
         min={0}
         max={30}
         onChange={this.handleOnChange}

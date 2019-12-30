@@ -20,30 +20,36 @@ class InnerContentComponent extends Component {
       zip: '',
       coordinates: [],
     };
-    this.getCoordinates = this.getCoordinates.bind(this)
+    this.setCoordinates = this.setCoordinates.bind(this)
+    //this.getCoordinates = this.getCoordinates.bind(this)
     this.nextStep = this.nextStep.bind(this)
     this.updatePreference = this.updatePreference.bind(this)
     this.saveSelection = this.saveSelection.bind(this)
     this.updateParentState = this.updateParentState.bind(this)
   }
+  setCoordinates(position){
+    var nextStep = this.state.step === 1 ? 2 : this.state.step
+    this.setState({
+      coordinates:{
+        latitude: position.latitude,
+        longitude: position.longitude,
+      },
+      step: nextStep
+    })
+  }
 
-  getCoordinates(){
-    var setPosition = (position) => {
-      //For edge case where user clicks for coordinates but then enters zip
-      //Only advance the step if the user is still on the location question
-      var nextStep = this.state.step === 1 ? 2 : this.state.step
-      this.setState({
-        coordinates:{
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        },
-        step: nextStep
-      })
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(setPosition);
+  componentDidUpdate(prevProps) {
+    //This is so the home button can reset the path and return to the first step
+    if (this.props.location !== prevProps.location) {
+      this.resetSteps();
     }
   }
+  resetSteps() {
+    this.setState({
+      step: 0
+    })
+  }
+
   updatePreference(value){
     var currentArray = this.state.foodArray
     var newArray = currentArray.filter(e => value.indexOf(e) < 0)
@@ -85,7 +91,7 @@ class InnerContentComponent extends Component {
                 />
       case 1:
         return <LocationQuestionComponent
-                  getCoordinates={this.getCoordinates}
+                  setCoordinates={this.setCoordinates}
                   updateParentState={this.updateParentState}
                   nextStep={this.nextStep}
                 />

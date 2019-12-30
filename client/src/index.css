@@ -1,5 +1,573 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #FFF8F8;
+}
+
+ul {
+ list-style-type: none;
+}
+
+#phone {
+  margin: 0 auto;
+  width: 596px;
+  padding-right: 2px;
+}
+
+.content-box {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.content {
+  max-width: 1022px;
+
+  /*height: 525px;*/
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #FFF8F8;
+}
+
+#logo {
+  margin-top: 30px;
+  margin-bottom: -40px;
+}
+
+.animated {
+  animation-duration: 2s;
+}
+
+.bounce {
+  animation-name: bounce;
+}
+
+@keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.flipInX {
+  animation-name: flipInX;
+}
+
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+.header {
+  position: relative;
+  height: 50px;
+  background-color: crimson;
+  transition: all 0.6s ease-in-out;
+}
+
+.header > .home_button {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.header .home_button:hover {
+  background: transparent;
+}
+
+.body {
+  /*height: 300px;*/
+}
+
+.question {
+  width: 100%;
+  height: auto;
+  font-size: 30px;
+  padding: 40px 0px;
+}
+
+.yelp-logo {
+  animation-name: fadeIn;
+  animation-duration: 6s;
+  padding-top: 10px;
+}
+.result-body-right .yelp-logo{
+  margin-top:
+}
+.yelp-logo span {
+  font-size: 11px;
+  color: #696969;
+  vertical-align: inherit;
+}
+
+.yelp-logo img {
+  margin-top: 10px;
+  width: 50px;
+}
+.results-yelp-logo{
+  margin-bottom: 12px;
+}
+.results-yelp-logo span {
+  font-size: 11px;
+  color: #696969;
+  vertical-align: bottom;
+}
+.results-yelp-logo img {
+  margin-top: 10px;
+  width: 50px;
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+.next_button {
+  display: block;
+  cursor: pointer;
+  margin: 0 auto;
+  max-width: 300px;
+  text-decoration: none;
+  background-color: white;
+  color: white;
+  font-size: 18px;
+  padding: 12px 50px;
+  border-radius: 5px;
+  animation-name: bgcchange;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bgcchange {
+    0%   {background-color: cornflowerblue;}
+    50%  {background-color: coral;}
+    100% {background-color: cornflowerblue;}
+}
+
+.answer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.questionText {
+  color: 'grey';
+  font-size: '20px';
+}
+#skip {
+  width: 102%;
+  font-size: 14px;
+  margin-top: 56px;
+  height: 30px;
+  padding-top: 10px;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+  vertical-align: text-top;
+}
+
+#skip:hover {
+  cursor: pointer;
+  transition: all 0.6s ease;
+  background-color: #ccc;
+  color: black;
+}
+
+.two-choices {
+  margin: 0px 10px;
+}
+
+.two-choices > button {
+  width: 200px;
+  height: 200px;
+  min-height: 140px;
+  display: inline-block;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.two-choices > button:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.two-choices img{
+  width: 50px;
+}
+.two-choices-link {
+  text-decoration: none;
+  font-size: 22px;
+  display: block;
+  padding-top: 20px;
+}
+
+.three-choices {
+  width: 141px;
+  height: 223px;
+  float: left;
+  padding-top: 45px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+}
+
+.three-choices-01 {
+  width: 140px;
+  height: 223px;
+  float: left;
+  padding-top: 45px;
+  font-size: 25px;
+  background-color: #BBCFF2;
+  list-style-type: none;
+}
+
+#three-choices {
+  height: 223px;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding-top: 110px;
+  margin-top: -95px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#three-choices:hover{
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.summary-title {
+  width: 75%;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  padding: 8px 20px;
+  margin: 0 auto;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.summary {
+  width: 75%;
+  margin: 0 auto;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: left;
+  background-color: white;
+  padding: 50px 20px;
+  margin-bottom: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.summary p{
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.magic {
+  animation-duration: 1s;
+}
+
+.openDownLeft {
+  animation-name: openDownLeft;
+}
+
+@keyframes openDownLeft {
+  0% {
+    transform-origin: bottom left;
+    transform: rotate(-110deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  100% {
+    transform-origin: bottom left;
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+}
+
+input[type="submit"]{
+   font-size: 16px;
+   color: dimgray;
+   background: none;
+   border: 0;
+   padding: 16px 40px;
+   -webkit-appearance: button;
+   -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+}
+
+input[type="submit"]:hover{
+	color: white;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.sweep-to-right {
+  text-decoration: none;
+  background-color: gainsboro;
+  position: relative;
+  display: inline-block;
+  transform: translateZ(0);
+}
+
+.sweep-to-right:hover {
+  background-color: gainsboro;
+}
+
+.sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: cornflowerblue;
+  transform: scaleX(0);
+  transition-duration: 0.6s;
+  transition-timing-function: ease-out;
+  transform-origin: 0 50%;
+}
+
+.sweep-to-right:hover:before {
+	transform: scaleX(1);
+	color: white;
+}
+.summary-button{
+  font-size: 16px;
+  border: 0;
+  padding: 16px 40px;
+}
+.restaurant-name {
+	font-size: 25px;
+	font-weight: bold;
+	line-height: 48px;
+}
+
+.result-body-container {
+	height: 300px;
+	width: 80%;
+	margin: 20px auto;
+  margin-bottom: 0px;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+}
+
+.result-body-left {
+	float: left;
+	width: 55%;
+	height: 200px;
+	text-align: center;
+}
+
+.result-body-right {
+	text-align: right;
+	height: 200px;
+	padding: 28px 18px;
+}
+.result-body-right a{
+  text-decoration: none;
+  color: black;
+}
+.rating {
+	vertical-align: text-bottom;
+  max-width: 100%;
+}
+
+.restaurant-image {
+	border-radius: 10%;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.address {
+	font-size: 16px;
+	line-height: 20px;
+  margin-top: 10px;
+}
+.googleMaps{
+  width: 40px;
+  height: auto;
+  display: inline-block;
+}
+.googleMaps a{
+  width: auto;
+  display: block;
+}
+.googleMaps img{
+  width: 100%;
+  display: inline-block;
+}
+#yelp-logo-1 {
+	vertical-align: text-top;
+}
+
+#check-this-out-on-yelp {
+	text-decoration: none;
+}
+
+#check-this-out-on-yelp:hover {
+	padding: 5px 15px;
+	font-size: 16px;
+	transition: all 0.3s ease-out;
+}
+
+.search-again {
+	text-decoration: none;
+	font-size: 22px;
+	color: black;
+}
+
+.search-again:hover {
+	color: lightseagreen;
+	background-color: transparent;
+	transition: all 0.3s ease-out;
+}
+
+.choice-for-today {
+  animation-name: colorchange;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  color: crimson;
+  font-size: 35px;
+  text-decoration: underline
+}
+.choice-for-today a{
+  color: black;
+}
+@keyframes colorchange {
+    0%   {color: crimson;}
+    50%  {color: cornflowerblue;}
+    100% {color: crimson;}
+}
+
+#loading {
+	margin-top: 180px;
+}
+
+.restaurant-carousel{
+  height: 300px;
+  width: 100%;
+}
+.carousel .slide img{
+  height: 300px;
+  width: auto;
+}
+
+.rangeslider{
+  max-width: 75%;
+  margin: 20px auto;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: crimson;
+}
+
+.locationQuestion h1{
+  padding: 25px 0px;
+}
+.locationQuestion .next_button{
+  display: block;
+  margin: 0 auto;
+}
+.locationQuestion .ctaText{
+  padding: 10px 0px;
+}
+.loader{
+  padding: 40px;
+}
+.zipForm input{
+    width: 206.59px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.price{
+  display: inline-block;
+  margin-left: 4px;
+  color: crimson;
+}
+.startCopy{
+  width: 100%;
+  height: auto;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .result-body-container{
+    height: auto;
+  }
+  .question{
+    padding: 40px 0px 25px 0px;
+  }
+  .result-body-left, .result-body-right{
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    float: none;
+    width: 75%;
+  }
+  .result-body-right{
+    text-align: center;
+    height: auto;
+  }
 }

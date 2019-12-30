@@ -20,19 +20,10 @@ class ResultsComponent extends Component {
   }
 
   componentWillMount(){
-    console.log(this.props.location.search);
-
     const { foodArr, price, distance } = queryStringParser.parse(this.props.location.search)
-    console.log(price)
     let foodArrParam = 'foodArr=' + foodArr
     let location = this.getLocationQuery();
     var self = this
-    console.log(location)
-    // if (this.props.location.state.latitude && this.props.location.state.longitude){
-    //   location = 'latitude=' + this.props.location.state.latitude + '&longitude=' + this.props.location.state.longitude
-    // } else if (this.props.location.state.zip) {
-    //   location = 'zip=' + this.props.location.state.zip
-    // }
 
     let priceQuery = 'price=' + price
     let distanceQuery = 'distance=' + distance
@@ -42,7 +33,7 @@ class ResultsComponent extends Component {
     if (foodArr && price && distance && location){
       Client.search(queryString, resp => {
         var response = JSON.parse(resp)
-        console.log(response)
+
         var businesses = shuffle(response['businesses'])
 
         if (resp['total'] == 0){

@@ -18,12 +18,16 @@ class PreferenceQuestionComponent extends Component {
         </div>
         <ul className="answer">
           <li className="two-choices" onClick={() => {this.handleClick(this.props.choiceOneSlice, true)}}>
-            <img src={this.props.imageOne} alt="Option 1"/>
-            <a className="two-choices-link">{this.props.optionOneText}</a>
+            <button>
+              <img src={this.props.imageOne} alt="Option 1"/>
+              <div className="two-choices-link">{this.props.optionOneText}</div>
+            </button>
           </li>
           <li className="two-choices" onClick={() => {this.handleClick(this.props.choiceTwoSlice, false)}}>
-            <img src={this.props.imageTwo} alt="Option 2"/>
-            <a className="two-choices-link">{this.props.optionTwoText}</a>
+            <button>
+              <img src={this.props.imageTwo} alt="Option 2"/>
+              <div className="two-choices-link">{this.props.optionTwoText}</div>
+            </button>
           </li>
         </ul>
       </div>
@@ -32,4 +36,3 @@ class PreferenceQuestionComponent extends Component {
 }
 
 export default PreferenceQuestionComponent;
-

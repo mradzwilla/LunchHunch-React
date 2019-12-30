@@ -17,12 +17,16 @@ class PriceQuestionComponent extends Component {
         </div>
         <ul className="answer">
           <li className="two-choices" onClick={() => {this.handleClick({price: '1,2,3,4'})}}>
-            <img src={this.props.imageOne} alt="I'm rich"/>
-            <a className="two-choices-link">{this.props.optionOneText}</a>
+            <button>
+              <img src={this.props.imageOne} alt="I'm rich"/>
+              <a className="two-choices-link">{this.props.optionOneText}</a>
+            </button>
           </li>
           <li className="two-choices" onClick={() => {this.handleClick({price: '1,2'})}}>
-            <img src={this.props.imageTwo} alt="I'm broke"/>
-            <a className="two-choices-link">{this.props.optionTwoText}</a>
+            <button>
+              <img src={this.props.imageTwo} alt="I'm broke"/>
+              <a className="two-choices-link">{this.props.optionTwoText}</a>
+            </button>
           </li>
         </ul>
       </div>
@@ -31,4 +35,3 @@ class PriceQuestionComponent extends Component {
 }
 
 export default PriceQuestionComponent;
-
