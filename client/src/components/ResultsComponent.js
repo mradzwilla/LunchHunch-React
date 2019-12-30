@@ -135,7 +135,7 @@ class ResultsComponent extends Component {
           {   currentBusiness.photos.map((photoPath, index) => {
                 return (
                   <div>
-                    <img src={photoPath} />
+                    <img src={photoPath} alt="Restaurant image"/>
                     <p className="legend">Legend {index}</p>
                   </div>
                 )

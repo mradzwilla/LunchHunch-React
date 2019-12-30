@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import {RiseLoader} from 'halogenium';
+import React, { Component } from 'react';
 import GeolocationComponent from '../components/GeolocationComponent';
 
 class LocationQuestionComponent extends Component {

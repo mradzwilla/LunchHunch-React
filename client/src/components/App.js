@@ -4,7 +4,6 @@ import { IconButton } from '@material-ui/core';
 
 import InnerContentComponent from '../components/InnerContentComponent.js';
 import Results from '../components/ResultsComponent.js';
-import Test from '../components/Test.js';
 
 import { BrowserRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom';
 

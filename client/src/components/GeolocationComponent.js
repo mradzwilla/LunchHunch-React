@@ -7,7 +7,6 @@ class GeolocationComponent extends React.Component {
   componentDidUpdate(){
     if (this.props.coords){
       //Callback sets parent state and advance next step
-      console.log(this.props.setCoordinates)
       this.props.setCoordinates(this.props.coords)
     }
   }

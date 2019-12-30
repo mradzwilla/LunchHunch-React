@@ -178,8 +178,8 @@ class InnerContentComponent extends Component {
                 nextStep={this.nextStep}
                 />
       case 9:
-        const { foodArray, zip, price } = this.state
-        const { latitude, longitude } = this.state.coordinates
+        const { foodArray, price } = this.state
+        // const { latitude, longitude } = this.state.coordinates
         const distance = this.state.range
         const locationParam = this.getLocationQuery();
         return (

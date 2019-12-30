@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-//import Slider from 'react-rangeslider';
 import Slider from '@material-ui/core/Slider';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-
-import Input from '@material-ui/core/Input';
-//import 'react-rangeslider/lib/index.css'; // To include the default styles
+import { withStyles } from '@material-ui/core/styles';
 
 const PrettoSlider = withStyles({
   root: {
