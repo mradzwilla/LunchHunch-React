@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "file-loader": "^1.1.6",
     "halogenium": "^2.2.3",
     "image-webpack-loader": "^3.4.2",
