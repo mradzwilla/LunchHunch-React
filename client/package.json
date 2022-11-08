@@ -16,7 +16,7 @@
     "react-geolocated": "^3.0.1",
     "react-rangeslider": "^2.2.0",
     "react-responsive-carousel": "^3.1.30",
-    "react-scripts": "^1.1.5",
+    "react-scripts": "^5.0.1",
     "shuffle-array": "^1.0.1",
     "styled-components": "^4.4.1",
     "yelp-fusion": "^2.0.3"
